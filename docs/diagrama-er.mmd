@@ -1,0 +1,28 @@
+erDiagram
+ ROLES ||--o{ USERS : clasifica
+ GROUPS |o--o{ USERS : agrupa
+ ROBOTICS_KITS ||--o{ COURSES : utiliza
+ COURSES ||--o{ COURSE_GROUP : asigna
+ GROUPS ||--o{ COURSE_GROUP : recibe
+ ROLES { bigint id PK
+ string name UK }
+ USERS { bigint id PK
+ string name
+ string email UK
+ string password
+ bigint role_id FK
+ bigint group_id FK }
+ GROUPS { bigint id PK
+ string name UK }
+ ROBOTICS_KITS { bigint id PK
+ string name UK }
+ COURSES { bigint id PK
+ string code UK
+ string title
+ string cover
+ text content
+ text didactic_material
+ bigint robotics_kit_id FK }
+ COURSE_GROUP { bigint id PK
+ bigint course_id FK
+ bigint group_id FK }
